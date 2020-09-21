@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Dashboard <?= $title ?? "" ?></title>
+    <title><?= $title ?? "" ?>Admin Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= APP_BASE_HREF ?>theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,16 +39,19 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
             <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-angle-double-right"></i>
                 <span>Dashboard</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+            <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/?path=daily-talukawise-data-entry">
+                <i class="fas fa-fw fa-angle-double-right"></i>
+                <span>Daily Data Entry</span></a>
         </li>
-        <!-- Divider -->
-        <hr class="sidebar-divider">
+        <li class="nav-item">
+            <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/?path=manage-hospitals">
+                <i class="fas fa-fw fa-angle-double-right"></i>
+                <span>Hospital Management</span></a>
+        </li>
 
     </ul>
     <!-- End of Sidebar -->

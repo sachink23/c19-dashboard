@@ -9,11 +9,11 @@ if (!isLogin($_SESSION["user"]["username"], $_SESSION["user"]["password"])) {
 }
 
 if (isset($_GET["path"])) {
-    if ($_GET["path"] == "form1") {
-
+    if ($_GET["path"] == "manage-hospitals") {
+        die($templates->render("admin/hospitals"));
     }
-    if ($_GET["path"] == "form2") {
-
+    if ($_GET["path"] == "daily-talukawise-data-entry") {
+        die($templates->render("admin/daily-talukawise-data-entry"));
     }
 }
 die($templates->render("admin/home"));

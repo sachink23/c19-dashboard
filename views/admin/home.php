@@ -1,6 +1,5 @@
 <?php
     $this->layout("admin/template", [
-        "title" => " : Home"
+        "title" => "Home : "
     ]);
 ?>
-hello
