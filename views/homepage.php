@@ -191,6 +191,44 @@
                     </div>
                     <div class="col-xl-1 mb-3"></div>
                 </div>
+                <hr />
+                <div class="container">
+
+                    <div class="row my-2">
+                    <div class="col-12 table-responsive">
+                        <table class="table table-bordered text-center bg-light">
+                            <thead class="thead-inverse bg-dark text-light">
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Hospital Name</th>
+                                <th>Type</th>
+                                <th>Gov/Pvt</th>
+                                <th>Total Beds</th>
+                                <th>Occupied Beds</th>
+                                <th>Available Beds</th>
+                                <th>Updated On</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $i = 0; foreach ($hospitals as $hospital):?>
+                                <tr>
+                                    <td><?= ++$i ?></td>
+                                    <td><?= $hospital["hospital_name"] ?></td>
+                                    <td><?= $hospital["type"] ?></td>
+                                    <td><?= $hospital["is_gov"] == 1 ? "GOV":"PVT" ?></td>
+                                    <td><?= $hospital["number_of_beds"] ?></td>
+                                    <td><?= $hospital["number_of_occ_beds"] ?></td>
+                                    <td><?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?></td>
+                                    <td><?= date("d/m/Y h:i:s A", strtotime($hospital["updated_on"])) ?></td>
+
+                                </tr>
+                            <?php endforeach; ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
 
 
             </div>
