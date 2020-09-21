@@ -87,7 +87,11 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+                <?php if(isset($_SESSION["PAGE_INFO_EXISTS"])): ?>
+                <div class="alert alert-<?= $_SESSION["PAGE_INFO_TYPE"] ?>" role="alert">
+                    <strong><?= $_SESSION["PAGE_INFO"] ?></strong>
+                </div>
+                <?php clearPageInfo(); endif; ?>
                 <?= $this->section("content"); ?>
 
             </div>
