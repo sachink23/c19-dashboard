@@ -3,29 +3,37 @@ $this->layout("admin/template", [
     "title" => "Talukawise Data Entry : "
 ]);
 ?>
-<div class="container my-2 py-2">
-    <div class="row">
-        <div class="col-xl-3"></div>
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="date">Report Date</label>
-                <input type="date"
-                       class="form-control" name="date" id="date" placeholder="">
+<form method="post" action="../backend/save-daily-talukawise.php">
+    <div class="container my-2 py-2">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="h4 text-center text-dark">Daily Talukawise Report</h1><hr />
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="form-group">
+                    <label for="date">Report Date</label>
+                    <input type="date" required
+                           class="form-control" name="date" id="date" placeholder="">
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="form-group">
+                    <label for="time">Report Time</label>
+                    <input type="time" required
+                           class="form-control" name="time" id="time" placeholder="">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-4">
+                <div class="form-group">
+                    <label for="tests">Conducted Tests</label>
+                    <input type="number" required
+                           class="form-control" name="tests" id="tests" placeholder="">
+                </div>
             </div>
         </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="time">Report Time</label>
-                <input type="time"
-                       class="form-control" name="time" id="time" placeholder="">
-            </div>
-        </div>
-        <div class="col-xl 3"></div>
     </div>
-
-</div>
-<div class="container-fluid table-responsive">
-
+    <div class="container-fluid table-responsive">
     <table class="table table-bordered text-center bg-white">
         <thead class="thead-inverse bg-dark text-light">
         <tr>
@@ -290,9 +298,44 @@ $this->layout("admin/template", [
                 </td>
                 <td id="parbhani_active_display"></td>
             </tr>
-
             <tr>
                 <td scope="row">8</td>
+                <td>Pathri</td>
+                <td>
+                    <input type="hidden" id="total_positive_pathri" value="<?= $talukas["pathri"]["positive"] ?? 0 ?>">
+                    <input type="hidden" id="total_death_pathri" value="<?= $talukas["pathri"]["death"] ?? 0 ?>">
+                    <input type="hidden" id="total_discharge_pathri" value="<?= $talukas["pathri"]["discharge"] ?? 0 ?>">
+                    <input type="hidden" id="total_active_pathri" value="<?= $talukas["pathri"]["active"] ?? 0 ?>">
+                    <div class="form-group">
+                        <input type="number"
+                               class="form-control"
+                               name="positive_pathri"
+                               id="positive_pathri"
+                               onchange="update()">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="number"
+                               class="form-control"
+                               name="discharge_pathri"
+                               id="discharge_pathri"
+                               onchange="update()">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="number"
+                               class="form-control"
+                               name="death_pathri"
+                               id="death_pathri"
+                               onchange="update()">
+                    </div>
+                </td>
+                <td id="pathri_active_display"></td>
+            </tr>
+            <tr>
+                <td scope="row">9</td>
                 <td>Purna</td>
                 <td>
                     <input type="hidden" id="total_positive_purna" value="<?= $talukas["purna"]["positive"] ?? 0 ?>">
@@ -329,7 +372,7 @@ $this->layout("admin/template", [
             </tr>
 
             <tr>
-                <td scope="row">9</td>
+                <td scope="row">10</td>
                 <td>Other</td>
                 <td>
                     <input type="hidden" id="total_positive_other" value="<?= $talukas["other"]["positive"] ?? 0 ?>">
@@ -364,12 +407,17 @@ $this->layout("admin/template", [
                 </td>
                 <td id="other_active_display"></td>
             </tr>
-
+            <tr>
+                <td colspan="6">
+                    <button type="submit" class="btn btn-outline-primary float-right">Submit Data</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
-<script>
 
+</form>
+<script>
     function update() {
         var talukas = [
             "gangakhed",
@@ -379,6 +427,7 @@ $this->layout("admin/template", [
             "sonpeth",
             "palam",
             "parbhani",
+            "pathri",
             "purna",
             "other"
         ];

@@ -94,14 +94,15 @@ $this->layout("admin/template", [
                                 <label for="hospital_subdist">Taluka</label>
                                 <select class="form-control" name="hospital_subdist" id="hospital_subdist" required>
                                     <option value="">Select Subdistrict</option>
-                                    <option value="Gangakhed">Gangakhed</option>
-                                    <option value="Jintur">Jintur</option>
-                                    <option value="Manwath">Manwath</option>
-                                    <option value="Selu">Selu</option>
-                                    <option value="Sonpeth">Sonpeth</option>
-                                    <option value="Palam">Palam</option>
-                                    <option value="Parbhani">Parbhani</option>
-                                    <option value="Purna">Purna</option>
+                                    <option value="gangakhed">Gangakhed</option>
+                                    <option value="jintur">Jintur</option>
+                                    <option value="manwath">Manwath</option>
+                                    <option value="selu">Selu</option>
+                                    <option value="sonpeth">Sonpeth</option>
+                                    <option value="palam">Palam</option>
+                                    <option value="parbhani">Parbhani</option>
+                                    <option value="pathri">Pathri</option>
+                                    <option value="purna">Purna</option>
                                 </select>
                             </div>
                         </div>
