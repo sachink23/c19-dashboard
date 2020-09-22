@@ -95,8 +95,9 @@ $this->layout("admin/template", [
                                 <select class="form-control" name="hospital_subdist" id="hospital_subdist" required>
                                     <option value="">Select Subdistrict</option>
                                     <option value="Gangakhed">Gangakhed</option>
+                                    <option value="Jintur">Jintur</option>
                                     <option value="Manwath">Manwath</option>
-                                    <option value="Sailu">Sailu</option>
+                                    <option value="Selu">Selu</option>
                                     <option value="Sonpeth">Sonpeth</option>
                                     <option value="Palam">Palam</option>
                                     <option value="Parbhani">Parbhani</option>

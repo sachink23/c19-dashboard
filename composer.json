@@ -1,11 +1,12 @@
 {
-    "autoload": {
-        "classmap": [
-          "classes/"
-        ]
-    },
-    "require": {
-        "league/plates": "^3.3",
-      "ext-pdo": "*"
-    }
+  "autoload": {
+    "classmap": [
+      "classes/"
+    ]
+  },
+  "require": {
+    "php": "^7.0",
+    "league/plates": "^3.3",
+    "ext-pdo": "*"
+  }
 }
