@@ -22,50 +22,6 @@ $this->layout("admin/template", [
         </div>
         <div class="col-xl 3"></div>
     </div>
-    <div class="row">
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="tests">Tests</label>
-                <input type="number"
-                       class="form-control" name="tests" id="tests" placeholder="">
-            </div>
-        </div>
-
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="positive">Positive</label>
-                <input type="number"
-                       class="form-control" name="positive" id="positive" placeholder="">
-            </div>
-        </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="discharge">Discharge</label>
-                <input type="number"
-                       class="form-control" name="discharge" id="discharge" placeholder="">
-            </div>
-        </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="death">Death</label>
-                <input type="number"
-                       class="form-control" name="death" id="death" placeholder="">
-            </div>
-        </div>
-        <div class="col-md-6 col-xl-3">
-            <div class="form-group">
-                <label for="active">Active</label>
-                <input type="number"
-                       class="form-control" name="active" id="active" placeholder="">
-            </div>
-        </div>
-        <div class="col-md-6 col-xl-9">
-
-        </div>
-        <div class="col-12">
-            <button type="button" class="btn btn-outline-dark float-md-right">Submit Only District Data</button>
-        </div>
-    </div>
 
 </div>
 <div class="container-fluid table-responsive">
@@ -413,6 +369,7 @@ $this->layout("admin/template", [
     </table>
 </div>
 <script>
+
     function update() {
         var talukas = [
             "gangakhed",
@@ -460,9 +417,8 @@ $this->layout("admin/template", [
             }
 
         }
-        document.getElementById("positive").value = district_positive;
-        document.getElementById("discharge").value = district_discharge;
-        document.getElementById("death").value = district_death;
-        document.getElementById("active").value = district_active;
+
+
     }
+    update();
 </script>

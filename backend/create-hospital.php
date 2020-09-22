@@ -28,7 +28,7 @@ if (
     $db = new \PDOCon\Db();
     $con = $db->con();
 
-    $stmt = $con->prepare("INSERT INTO hospital_master (hospital_name, type, is_gov, taluka, number_of_beds, number_of_o2_beds, number_of_ventilator_beds, number_of_available_beds, address, contact_person, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $con->prepare("INSERT INTO hospital_master (hospital_name, type, is_gov, taluka, number_of_beds, number_of_o2_beds, number_of_ventilator_beds, number_of_occ_beds, address, contact_person, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     try {
         $res = $stmt->execute([
             $_POST["hospital_name"],
