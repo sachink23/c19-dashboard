@@ -5,6 +5,7 @@ $this->layout("admin/template", [
 ?>
 <div class="container my-2 py-2">
     <div class="row">
+        <div class="col-xl-3"></div>
         <div class="col-md-6 col-xl-3">
             <div class="form-group">
                 <label for="date">Report Date</label>
@@ -19,19 +20,50 @@ $this->layout("admin/template", [
                        class="form-control" name="time" id="time" placeholder="">
             </div>
         </div>
+        <div class="col-xl 3"></div>
+    </div>
+    <div class="row">
         <div class="col-md-6 col-xl-3">
             <div class="form-group">
-                <label for="time">Tests</label>
+                <label for="tests">Tests</label>
                 <input type="number"
                        class="form-control" name="tests" id="tests" placeholder="">
             </div>
         </div>
+
         <div class="col-md-6 col-xl-3">
             <div class="form-group">
-                <label for="positive">District Positive</label>
+                <label for="positive">Positive</label>
                 <input type="number"
                        class="form-control" name="positive" id="positive" placeholder="">
             </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="form-group">
+                <label for="discharge">Discharge</label>
+                <input type="number"
+                       class="form-control" name="discharge" id="discharge" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="form-group">
+                <label for="death">Death</label>
+                <input type="number"
+                       class="form-control" name="death" id="death" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="form-group">
+                <label for="active">Active</label>
+                <input type="number"
+                       class="form-control" name="active" id="active" placeholder="">
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-9">
+
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-outline-dark float-md-right">Submit Only District Data</button>
         </div>
     </div>
 
@@ -376,11 +408,61 @@ $this->layout("admin/template", [
                 </td>
                 <td id="other_active_display"></td>
             </tr>
+
         </tbody>
     </table>
 </div>
 <script>
     function update() {
+        var talukas = [
+            "gangakhed",
+            "jintur",
+            "manwath",
+            "selu",
+            "sonpeth",
+            "palam",
+            "parbhani",
+            "purna",
+            "other"
+        ];
+        var district_positive = 0;
+        var district_death = 0;
+        var district_discharge = 0;
+        var district_active = 0;
+        for (let i = 0; i < talukas.length; i++) {
+            var taluka_total_positive = document.getElementById("total_positive_"+talukas[i]).value + document.getElementById("positive_"+talukas[i]).value;
+            var taluka_total_discharge = document.getElementById("total_discharge_"+talukas[i]).value + document.getElementById("discharge_"+talukas[i]).value;
+            var taluka_total_death = document.getElementById("total_death_"+talukas[i]).value + document.getElementById("death_"+talukas[i]).value;
+            var taluka_active = parseInt(taluka_total_positive) - (parseInt(taluka_total_death) + parseInt(taluka_total_discharge));
+            document.getElementById("total_active_"+talukas[i]).value = taluka_active;
+            document.getElementById(talukas[i] + "_active_display").innerText = taluka_active;
 
+            district_positive += parseInt(taluka_total_positive);
+            district_death += parseInt(taluka_total_death);
+            district_discharge += parseInt(taluka_total_discharge);
+            district_active += taluka_active;
+
+            if (taluka_active < 0) {
+                alert("invalid input");
+                return false;
+            }
+            if (taluka_total_positive < 0) {
+                alert("invalid input");
+                return false;
+            }
+            if (taluka_total_discharge < 0) {
+                alert("invalid input");
+                return false;
+            }
+            if (taluka_total_death< 0) {
+                alert("invalid input");
+                return false;
+            }
+
+        }
+        document.getElementById("positive").value = district_positive;
+        document.getElementById("discharge").value = district_discharge;
+        document.getElementById("death").value = district_death;
+        document.getElementById("active").value = district_active;
     }
 </script>
