@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: rds1.ccp8pntuhe7m.ap-south-1.rds.amazonaws.com
--- Generation Time: Sep 23, 2020 at 05:25 AM
+-- Generation Time: Sep 23, 2020 at 12:59 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.22-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -36,7 +36,7 @@ CREATE TABLE `daily` (
   `death` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `active` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,6 @@ CREATE TABLE `daily` (
 
 CREATE TABLE `hospital_master` (
   `hospital_id` int(10) UNSIGNED NOT NULL,
-  `hospital_code` varchar(64) NOT NULL,
   `hospital_name` varchar(1024) NOT NULL,
   `type` varchar(1024) NOT NULL,
   `is_gov` tinyint(1) NOT NULL,
@@ -59,7 +58,11 @@ CREATE TABLE `hospital_master` (
   `contact_person` varchar(256) NOT NULL,
   `contact_number` varchar(25) NOT NULL,
   `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hospital_master`
+--
 
 -- --------------------------------------------------------
 
@@ -73,7 +76,7 @@ CREATE TABLE `hospital_wise_daily_report` (
   `date` date NOT NULL,
   `occupied_beds` int(10) UNSIGNED DEFAULT NULL,
   `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -90,7 +93,7 @@ CREATE TABLE `progressive` (
   `death` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `active` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -103,7 +106,7 @@ CREATE TABLE `users` (
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -126,9 +129,7 @@ ALTER TABLE `daily`
 -- Indexes for table `hospital_master`
 --
 ALTER TABLE `hospital_master`
-  ADD PRIMARY KEY (`hospital_id`),
-  ADD UNIQUE KEY `hospital_code` (`hospital_code`),
-  ADD UNIQUE KEY `hospital_code_2` (`hospital_code`);
+  ADD PRIMARY KEY (`hospital_id`);
 
 --
 -- Indexes for table `hospital_wise_daily_report`
@@ -164,7 +165,7 @@ ALTER TABLE `daily`
 -- AUTO_INCREMENT for table `hospital_master`
 --
 ALTER TABLE `hospital_master`
-  MODIFY `hospital_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `hospital_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `hospital_wise_daily_report`
