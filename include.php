@@ -7,6 +7,8 @@ require_once "vendor/autoload.php";
 
 require_once "db.php";
 
+define("APP_BASE_HREF", "/");
+
 define("APP_ROOT", __DIR__);
 
 define("APP_NAME", "Daily Covid Reporting System");
@@ -20,7 +22,7 @@ define("VIEWS_ROOT", APP_ROOT . "/views/");
 
 define("APP_SALT", "SomeCoolSalt");
 
-define("APP_BASE_HREF", "/");
+
 
 session_start();
 
