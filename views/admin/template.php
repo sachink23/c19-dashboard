@@ -74,16 +74,11 @@
                 Admin
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
-
-
                     <div class="topbar-divider"></div>
                     <div class="container-fluid">
                         <a role="button" href="../backend/logout.php" type="button" class="btn btn-outline-primary">Logout</a>
                     </div>
-
-
                 </ul>
-
             </nav>
             <!-- End of Topbar -->
 
