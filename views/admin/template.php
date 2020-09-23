@@ -39,11 +39,11 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <!--li class="nav-item">
             <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/">
                 <i class="fas fa-fw fa-angle-double-right"></i>
                 <span>Dashboard</span></a>
-        </li>
+        </li-->
         <li class="nav-item">
             <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/?path=daily-talukawise-data-entry">
                 <i class="fas fa-fw fa-angle-double-right"></i>
@@ -78,7 +78,7 @@
 
                     <div class="topbar-divider"></div>
                     <div class="container-fluid">
-                        <a role="button"  type="button" class="btn btn-outline-primary">Logout</a>
+                        <a role="button" href="../backend/logout.php" type="button" class="btn btn-outline-primary">Logout</a>
                     </div>
 
 

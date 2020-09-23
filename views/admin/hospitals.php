@@ -29,26 +29,54 @@ $this->layout("admin/template", [
             </thead>
             <tbody>
             <?php $i = 0; foreach ($hospitals as $hospital):?>
-                <tr>
-                    <td><?= ++$i ?></td>
-                    <td><?= $hospital["hospital_name"] ?></td>
-                    <td><?= $hospital["type"] ?></td>
-                    <td><?= $hospital["is_gov"] == 1 ? "GOV":"PVT" ?></td>
-                    <td><?= $hospital["number_of_beds"] ?></td>
-                    <td><?= $hospital["number_of_occ_beds"] ?></td>
-                    <td><?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?></td>
-                    <td><?= date("d/m/Y h:i:s A", strtotime($hospital["updated_on"])) ?></td>
-                    <td>
-                        <a role="button" href="javascript:void(0)" type="button" class="btn btn-outline-primary">Update Beds</a>
-                    </td>
-                </tr>
+                <form method="post" action="../backend/edit-hospital.php">
+                    <input type="hidden" name="hid" value="<?= $hospital["hospital_id"] ?>"
+                    <tr>
+
+                        <td><?= ++$i ?></td>
+                        <td><?= $hospital["hospital_name"] ?></td>
+                        <td><?= $hospital["type"] ?></td>
+                        <td><?= $hospital["is_gov"] == 1 ? "GOV":"PVT" ?></td>
+                        <td><?= $hospital["number_of_beds"] ?></td>
+                        <td>
+                            <div class="form-group">
+                                <input type="number"
+                                       onchange="document.getElementById('ava_<?= $hospital["hospital_id"] ?>').value = <?= $hospital["number_of_beds"] ?> - parseInt(document.getElementById('occ_<?= $hospital["hospital_id"] ?>').value)"
+                                       class="form-control" name="occ_<?= $hospital["hospital_id"] ?>" id="occ_<?= $hospital["hospital_id"] ?>"  value="<?= $hospital["number_of_occ_beds"] ?>">
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" disabled
+                                   class="form-control" id="ava_<?= $hospital["hospital_id"] ?>" name="ava_<?= $hospital["hospital_id"] ?>" value="<?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?>">
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="date"
+                                       class="form-control" name="date_<?= $hospital["hospital_id"] ?>" value="<?= date("Y-m-d", strtotime($hospital["updated_on"])) ?>">
+                            </div>
+                            <div class="form-group">
+                                <input type="time"
+                                       class="form-control" name="time_<?= $hospital["hospital_id"] ?>" value="<?= date("H:i", strtotime($hospital["updated_on"])) ?>">
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-outline-primary">Update Beds</submit>
+                        </td>
+                    </tr>
+
+                </form>
             <?php endforeach; ?>
 
             </tbody>
         </table>
     </div>
 </div>
+<script>
+    function report() {
 
+    }
+</script>
 <!-- Modal -->
 <div class="modal fade" id="addHospitalModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

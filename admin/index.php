@@ -40,4 +40,4 @@ try {
 } catch (PDOException $e) {
     pageInfo("warning", "Database Error!!!!");
 }
-die($templates->render("admin/home"));
+header("Location: ./?path=daily-talukawise-data-entry");
