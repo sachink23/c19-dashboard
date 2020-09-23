@@ -34,9 +34,9 @@
                         <a role="button" href="login.php" class="btn btn-outline-info float-right">Login</a>
                     </div>
                     <div class="col-12 mb-4">
-                        <h1 class="h3 text-danger">COVID-19</h1>
+                        <h1 class="h3 text-danger" style="font-weight: 800">COVID-19</h1>
                         <hr />
-                        <h2 class="h4 text-primary">Parbhani District Dashboard</h2>
+                        <h2 class="h4 text-primary" style="font-weight: 650">Parbhani District Dashboard</h2>
                     </div>
                 </div>
 
@@ -114,9 +114,10 @@
                     </div>
                     <div class="col-xl-1 mb-3"></div>
                 </div>
+                <hr />
                 <div class="row mt-3">
                     <div class="col-12 mb-4">
-                        <h2 class="h4 text-primary">Hospitals and Beds</h2>
+                        <h2 class="h4 text-primary" style="font-weight: 650">Hospitals and Beds</h2>
                     </div>
                     <div class="col-xl-1 mb-3"></div>
                     <div class="col-xl-2 col-md-6 mb-3">
@@ -195,6 +196,9 @@
                 <div class="container">
 
                     <div class="row my-2">
+                    <div class="col-12">
+                        <h2 class="h4 text-primary" style="font-weight: 650">List of Available Beds In Hospitals</h2><hr />
+                    </div>
                     <div class="col-12 table-responsive">
                         <table class="table table-bordered text-center bg-light">
                             <thead class="thead-inverse bg-dark text-light">

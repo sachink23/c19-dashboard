@@ -412,6 +412,9 @@ $this->layout("admin/template", [
                     <button type="submit" class="btn btn-outline-primary float-right">Submit Data</button>
                 </td>
             </tr>
+            <tr>
+
+            </tr>
         </tbody>
     </table>
 </div>
