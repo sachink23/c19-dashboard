@@ -436,19 +436,38 @@ $this->layout("admin/template", [
         var district_discharge = 0;
         var district_active = 0;
         for (let i = 0; i < talukas.length; i++) {
-            var taluka_total_positive = document.getElementById("total_positive_"+talukas[i]).value + document.getElementById("positive_"+talukas[i]).value;
-            var taluka_total_discharge = document.getElementById("total_discharge_"+talukas[i]).value + document.getElementById("discharge_"+talukas[i]).value;
-            var taluka_total_death = document.getElementById("total_death_"+talukas[i]).value + document.getElementById("death_"+talukas[i]).value;
-            var taluka_active = parseInt(taluka_total_positive) - (parseInt(taluka_total_death) + parseInt(taluka_total_discharge));
+            var tal_pos = 0;
+            var tal_dis = 0;
+            var tal_death = 0;
+            if (document.getElementById("positive_"+talukas[i]).value) {
+                tal_pos = parseInt(document.getElementById("positive_"+talukas[i]).value);
+            }
+            if (document.getElementById("discharge_"+talukas[i]).value) {
+                tal_dis = parseInt(document.getElementById("discharge_"+talukas[i]).value);
+            }
+            if (document.getElementById("death_"+talukas[i]).value) {
+                tal_death = parseInt(document.getElementById("death_"+talukas[i]).value);
+            }
+
+            var taluka_total_positive = parseInt(document.getElementById("total_positive_"+talukas[i]).value) + tal_pos;
+
+            var taluka_total_discharge = parseInt(document.getElementById("total_discharge_"+talukas[i]).value) + tal_dis;
+
+            var taluka_total_death = parseInt(document.getElementById("total_death_"+talukas[i]).value) + tal_death;
+
+            var taluka_active = taluka_total_positive - (taluka_total_death + taluka_total_discharge);
+
             document.getElementById("total_active_"+talukas[i]).value = taluka_active;
+
             document.getElementById(talukas[i] + "_active_display").innerText = taluka_active;
 
-            district_positive += parseInt(taluka_total_positive);
-            district_death += parseInt(taluka_total_death);
-            district_discharge += parseInt(taluka_total_discharge);
+            district_positive += taluka_total_positive;
+            district_death += taluka_total_death;
+            district_discharge += taluka_total_discharge;
             district_active += taluka_active;
 
             if (taluka_active < 0) {
+
                 alert("invalid input");
                 return false;
             }
