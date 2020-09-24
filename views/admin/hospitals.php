@@ -6,6 +6,23 @@ $this->layout("admin/template", [
 
 <div class="row">
     <div class="col-12">
+        <script>
+            function clearTiming() {
+                var allDateElems = document.getElementsByClassName("default_date");
+                var allTimeElems = document.getElementsByClassName("default_time");
+                var dt = new Date();
+
+                for (let i = 0; i < allDateElems.length; i++) {
+                    allDateElems[i].value = "<?= date("Y-m-d", time()) ?>"
+                }
+
+                for (let i = 0; i < allTimeElems.length; i++) {
+                    allTimeElems[i].value = "18:00";
+                }
+            }
+        </script>
+        <button type="button" onclick="clearTiming()" class="btn btn-outline-danger float-left">Clear Last Update Time To Default</button>
+
         <button  type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#addHospitalModal">
             <i class="fa fa-plus"></i> Add Hospital
         </button>
@@ -54,11 +71,11 @@ $this->layout("admin/template", [
                         <td>
                             <div class="form-group">
                                 <input type="date"
-                                       class="form-control" name="date_<?= $hospital["hospital_id"] ?>" value="<?= date("Y-m-d", strtotime($hospital["updated_on"])) ?>">
+                                       class="form-control default_date" name="date_<?= $hospital["hospital_id"] ?>" value="<?= date("Y-m-d", strtotime($hospital["updated_on"])) ?>">
                             </div>
                             <div class="form-group">
                                 <input type="time"
-                                       class="form-control" name="time_<?= $hospital["hospital_id"] ?>" value="<?= date("H:i", strtotime($hospital["updated_on"])) ?>">
+                                       class="form-control default_time" name="time_<?= $hospital["hospital_id"] ?>" value="<?= date("H:i", strtotime($hospital["updated_on"])) ?>">
                             </div>
                         </td>
                         <td>

@@ -233,7 +233,7 @@
                                         <td><?= $hospital["number_of_beds"] ?></td>
                                         <td><?= $hospital["number_of_occ_beds"] ?></td>
                                         <td><?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?></td>
-                                        <td><?= date("d/m/Y h:i:s A", strtotime($hospital["updated_on"])) ?></td>
+                                        <td><?= date("d/m/Y h:i A", strtotime($hospital["updated_on"])) ?></td>
 
                                     </tr>
                                 <?php endforeach; ?>

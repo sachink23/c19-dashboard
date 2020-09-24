@@ -22,6 +22,7 @@ define("VIEWS_ROOT", APP_ROOT . "/views/");
 
 define("APP_SALT", "SomeCoolSalt");
 
+date_default_timezone_set("Asia/Calcutta");
 
 
 session_start();
