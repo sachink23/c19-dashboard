@@ -1,5 +1,7 @@
 <?php
 
+use PDOCon\Db;
+
 require_once "../include.php";
 
 if (!isLogin($_SESSION["user"]["username"], $_SESSION["user"]["password"])) {
@@ -19,13 +21,13 @@ if (
     isset($_POST["o2_beds"]) &&
     isset($_POST["vent_beds"])
 ) {
-    if ($_POST["total_beds"] < $_POST["o2_beds"] + $_POST["vent_beds"]) {
-        pageInfo("danger", "Invalid Input");
+    if ($_POST["total_beds"] < $_POST["o2_beds"] ||  $_POST["total_beds"] < $_POST["vent_beds"]) {
+        pageInfo("danger", "Invalid For Beds!");
         header("Location: ../admin/?path=manage-hospitals");
         exit;
     }
 
-    $db = new \PDOCon\Db();
+    $db = new Db();
     $con = $db->con();
 
     $stmt = $con->prepare("INSERT INTO hospital_master (hospital_name, type, is_gov, taluka, number_of_beds, number_of_o2_beds, number_of_ventilator_beds, number_of_occ_beds, address, contact_person, contact_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
