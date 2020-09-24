@@ -24,7 +24,14 @@ if (!(
     exit;
 }
 try {
-
+    $stmt = $con->prepare("SELECT number_of_beds, hospital_name FROM hospital_master WHERE hospital_id = ?");
+    $stmt->execute([$_POST["hid"]]);
+    $available = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+    if ($available["number_of_beds"] < $_POST["occ_".$_POST["hid"]]) {
+        pageInfo("danger", "Invalid Input! Occupied Beds Cant be greater than ".$available["number_of_beds"] . " for ".$available["hospital_name"]);
+        header("Location: ../admin/?path=manage-hospitals");
+        exit;
+    }
     $stmt = $con->prepare("UPDATE hospital_master SET number_of_occ_beds = ?, updated_on = ? WHERE hospital_id = ?");
     $stmt->execute([
         $_POST["occ_".$_POST["hid"]],
