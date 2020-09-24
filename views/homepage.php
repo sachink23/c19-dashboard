@@ -221,12 +221,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $i = 0; foreach ($hospitals as $hospital):?>
+                                <?php $total_gov_hosps = 0; $i = 0; foreach ($hospitals as $hospital):?>
                                     <tr>
                                         <td><?= ++$i ?></td>
                                         <td><?= $hospital["hospital_name"] ?></td>
                                         <td><?= $hospital["type"] ?></td>
                                         <td><?= $hospital["is_gov"] == 1 ? "GOV":"PVT" ?></td>
+                                        <?php
+                                            $total_gov_hosps += ($hospital["is_gov"] == 1 ? 1:0);
+                                        ?>
                                         <td><?= $hospital["number_of_beds"] ?></td>
                                         <td><?= $hospital["number_of_occ_beds"] ?></td>
                                         <td><?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?></td>
@@ -243,13 +246,25 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="row">
+                                <div class="col-12 text-left font-weight-bolder">
+                                    <h5>Appendix</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li class="text-left">CCC : Covid Care Centre</li>
+                                        <li class="text-left">DCH : Dedicated Covid Hospital</li>
+                                        <li class="text-left">DCHC : Dedicated Covid Healthcare</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li class="text-left">Government Hospitals = <?= $total_gov_hosps ?></li>
+                                        <li class="text-left">Private Hospitals = <?= count($hospitals) - $total_gov_hosps ?></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                            <p class="text-left">Appendix</p>
-                            <ol>
-                                <li class="text-left">CCC : Covid Care Centre</li>
-                                <li class="text-left">DCH : Dedicated Covid Hospital</li>
-                                <li class="text-left">DCHC : Dedicated Covid Healthcare</li>
-                            </ol>
                         </div>
                     </div>
                 </div>

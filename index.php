@@ -59,5 +59,5 @@ die($templates->render("homepage", [
     "total_available_beds" => $available_beds_count,
     "hospitals" => $hospitals,
     "updated_hosps_det_time" => $upd,
-    "last_talukawise_update" => $last_update_talukawise
+    "last_talukawise_update" => $last_update_talukawise,
 ]));
