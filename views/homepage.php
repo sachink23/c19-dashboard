@@ -204,7 +204,7 @@
 
                     <div class="row my-2">
                         <div class="col-12">
-                            <h2 class="h4 text-primary" style="font-weight: 650">List of Available Beds In Hospitals</h2><hr />
+                            <h2 class="h4 text-primary" style="font-weight: 650">Covid Hospitals and Care Centres</h2><hr />
                         </div>
                         <div class="col-12 p-3 card table-responsive">
                             <table class="table table-bordered text-center bg-light">
