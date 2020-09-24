@@ -42,7 +42,7 @@
                         <h1 class="h1 text-danger" style="font-weight: 800">COVID-19</h1>
                         <hr />
                         <h2 class="h2 text-primary" style="font-weight: 650">Parbhani District Dashboard</h2>
-                        <p style="font-weight: 800">As On <?= date("d/m/Y h:i:s A",strtotime($last_talukawise_update)) ?></p>
+                        <p style="font-weight: 800">As On <?= $last_talukawise_update ?></p>
                     </div>
                 </div>
 

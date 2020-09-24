@@ -17,6 +17,13 @@ $hospitals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $con->query("SELECT sum(tests) as total_tests, sum(positive) as total_positive,  sum(death) as total_dead, sum(discharge) as total_discharge, max(updated_on) as last_update FROM progressive");
 $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$last_update_talukawise = $res[0]["last_update"] ?? "NOT AVAILABLE";
+if ($last_update_talukawise != "NOT AVAILABLE") {
+    $last_update_talukawise = date("d/m/Y h:i:s A", strtotime($last_update_talukawise));
+}
+
+
+
 $stmt = $con->query("SELECT count(*) as ccc FROM hospital_master WHERE type = 'CCC'");
 $ccc_count = $stmt->fetchAll(PDO::FETCH_ASSOC)[0]["ccc"];
 
@@ -52,5 +59,5 @@ die($templates->render("homepage", [
     "total_available_beds" => $available_beds_count,
     "hospitals" => $hospitals,
     "updated_hosps_det_time" => $upd,
-    "last_talukawise_update" => $res[0]["last_update"]
+    "last_talukawise_update" => $last_update_talukawise
 ]));
