@@ -36,6 +36,26 @@ try {
                 "talukas" => $talukas
             ]));
         }
+        if ($_GET["path"] == "edit-hospital") {
+            if (!isset($_GET["hid"])) {
+                pageInfo("danger", "Invalid Hospital Selected");
+                header("Location: ./?path=manage-hospitals");
+                exit;
+            }
+            $stmt = $con->prepare("SELECT * FROM hospital_master WHERE hospital_id = ?");
+            $stmt->execute([$_GET["hid"]]);
+            $hospitals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($hospitals) == 1) {
+                $hospital = $hospitals[0];
+                die($templates->render("admin/edit-hospital", [
+                    "hospital" => $hospital
+                ]));
+            } else {
+                pageInfo("danger", "Invalid Hospital Selected");
+                header("Location: ./?path=manage-hospitals");
+                exit;
+            }
+        }
     }
 } catch (PDOException $e) {
     pageInfo("warning", "Database Error!!!!");

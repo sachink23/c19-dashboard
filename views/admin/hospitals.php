@@ -25,6 +25,7 @@ $this->layout("admin/template", [
                 <th>Available Beds</th>
                 <th>Updated On</th>
                 <th>Update Beds</th>
+                <th>Modify</th>
             </tr>
             </thead>
             <tbody>
@@ -61,7 +62,10 @@ $this->layout("admin/template", [
                             </div>
                         </td>
                         <td>
-                            <button type="submit" class="btn btn-outline-primary">Update Beds</submit>
+                            <button type="submit" class="btn btn-outline-primary">Update Beds</button>
+                        </td>
+                        <td>
+                            <a role="button" href="./?path=edit-hospital&hid=<?= $hospital["hospital_id"] ?>" class="btn btn-outline-primary">Modify</a>
                         </td>
                     </tr>
 

@@ -408,6 +408,13 @@ $this->layout("admin/template", [
                 <td id="other_active_display"></td>
             </tr>
             <tr>
+                <th colspan="2">Total</th>
+                <td id="pos_tot_dis"></td>
+                <td id="dis_tot_dis"></td>
+                <td id="dea_tot_dis"></td>
+                <td id="act_tot_dis"></td>
+            </tr>
+            <tr>
                 <td colspan="6">
                     <button type="submit" class="btn btn-outline-primary float-right">Submit Data</button>
                 </td>
@@ -438,6 +445,11 @@ $this->layout("admin/template", [
         var district_death = 0;
         var district_discharge = 0;
         var district_active = 0;
+
+        var current_positive = 0;
+        var current_death = 0;
+        var current_discharge = 0;
+
         for (let i = 0; i < talukas.length; i++) {
             var tal_pos = 0;
             var tal_dis = 0;
@@ -451,6 +463,9 @@ $this->layout("admin/template", [
             if (document.getElementById("death_"+talukas[i]).value) {
                 tal_death = parseInt(document.getElementById("death_"+talukas[i]).value);
             }
+            current_positive += tal_pos;
+            current_discharge += tal_dis;
+            current_death += tal_death;
 
             var taluka_total_positive = parseInt(document.getElementById("total_positive_"+talukas[i]).value) + tal_pos;
 
@@ -468,6 +483,8 @@ $this->layout("admin/template", [
             district_death += taluka_total_death;
             district_discharge += taluka_total_discharge;
             district_active += taluka_active;
+
+
 
             if (taluka_active < 0) {
 
@@ -489,6 +506,10 @@ $this->layout("admin/template", [
 
         }
 
+        document.getElementById("pos_tot_dis").innerText = current_positive;
+        document.getElementById("dis_tot_dis").innerText = current_discharge;
+        document.getElementById("dea_tot_dis").innerText = current_death;
+        document.getElementById("act_tot_dis").innerText = district_active;
 
     }
     update();
