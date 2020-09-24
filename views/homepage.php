@@ -31,6 +31,7 @@
                 
                 <div class="row">
                     <div class="col-12 mb-3">
+                        <button id="scrollBtn" style="display: none" onclick="startScroller()" class="btn btn-outline-info float-left">Start Scroller</button>
                         <?php if(!$logged_in): ?>
                         <a role="button" href="login.php" class="btn btn-outline-info float-right">Login</a>
                         <?php else: ?>
@@ -310,7 +311,18 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= APP_BASE_HREF ?>theme/js/sb-admin-2.min.js"></script>
+<script>
+    function startScroller() {
+        scroller();
 
+    }
+    function scroller() {
+        console.trace();
+        $('html, body').animate({ scrollTop: $(document).height() - $(window).height() }, 100000, function() {
+            $(this).animate({ scrollTop: 0 }, 100000, scroller());
+        });
+    }
+</script>
 
 </body>
 
