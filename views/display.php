@@ -34,16 +34,9 @@
 
 
                 <div class="row">
-                    <div class="col-6 mb-2">
+                    <div class="col-12 mb-1">
                         <h1 class="h1 text-danger" style="font-weight: 800;">COVID-19</h1>
-                    </div>
-                    <div class="col-6 mb-2">
-                        <img src="<?=APP_BASE_HREF ?>assets/nic.png" height="40px"><br /><br />
-                        <div class="copyright text-center my-auto">
-                            <span>Designed and developed by NIC Parbhani</span>
-                        </div>
-                    </div>
-                    <div class="col-12 mb-2">
+
                         <hr />
                         <h2 class="h2 text-primary" style="font-weight: 650">Parbhani District Dashboard</h2>
                         <p style="font-weight: 800">As On <?= $last_talukawise_update ?></p>
@@ -202,9 +195,12 @@
                         </div>
                     </div>
                     <div class="col-xl-1 mb-3"></div>
+                    <div class="col-12 p-3" style="font-size: 23px">
+                        <p>CCC - Covid Care Centre | DCH - Dedicated Covid Hospital | DCHC - Dedicated Covid Healthcare</p>
+                    </div>
                 </div>
                 <hr />
-                <marquee class="text-danger" style="font-size: 22px">
+                <marquee class="text-danger" style="font-size: 36px">
                     <?php $total_gov_hosps = 0; $i = 0; foreach ($hospitals as $hospital):?>
                         <?php
                         $total_gov_hosps += ($hospital["is_gov"] == 1 ? 1:0);
@@ -212,39 +208,9 @@
 
                         <?= $hospital["hospital_name"] ?> - <?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?> Beds Available &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 
-
                     <?php endforeach; ?>
                 </marquee>
                 <hr />
-                <div class="container">
-
-                    <div class="row my-2">
-                        <div class="col-12 p-3 card">
-
-                            <div class="row">
-                                <div class="col-12 text-left font-weight-bolder">
-                                    <h5>Appendix</h5>
-                                </div>
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li class="text-left">CCC : Covid Care Centre</li>
-                                        <li class="text-left">DCH : Dedicated Covid Hospital</li>
-                                        <li class="text-left">DCHC : Dedicated Covid Healthcare</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li class="text-left">Government Hospitals = <?= $total_gov_hosps ?></li>
-                                        <li class="text-left">Private Hospitals = <?= count($hospitals) - $total_gov_hosps ?></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
             <!-- /.container-fluid -->
 
@@ -254,11 +220,9 @@
         <!-- Footer -->
 
         <footer class="sticky-footer bg-white">
-            <hr />
             <div class="container my-auto text-center">
                 <img src="<?=APP_BASE_HREF ?>assets/nic.png" height="40px"><br /><br />
                 <div class="copyright text-center my-auto">
-
                     <span>Designed and developed by NIC Parbhani</span>
                 </div>
             </div>
