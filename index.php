@@ -45,7 +45,8 @@ $upd = $stmt_->fetchAll(PDO::FETCH_ASSOC)[0]["update_last"] ?? "NOT AVAILABLE";
 if ($upd != "NOT AVAILABLE") {
     $upd = date("d/m/Y h:i:s A", strtotime($upd));
 }
-die($templates->render("homepage", [
+$path = isset($_GET["display"]) ? "display":"homepage";
+die($templates->render($path, [
     "logged_in" => $logged_in,
     "total_tests" => $res[0]["total_tests"] ?? 0,
     "total_positive" => $res[0]["total_positive"] ?? 0,
