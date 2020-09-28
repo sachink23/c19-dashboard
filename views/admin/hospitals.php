@@ -21,7 +21,6 @@ $this->layout("admin/template", [
                 }
             }
         </script>
-        <button type="button" onclick="clearTiming()" class="btn btn-outline-danger float-left">Clear Last Update Time To Default</button>
 
         <button  type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#addHospitalModal">
             <i class="fa fa-plus"></i> Add Hospital
@@ -210,3 +209,7 @@ $this->layout("admin/template", [
         </form>
     </div>
 </div>
+<script>
+
+    clearTiming();
+</script>

@@ -45,9 +45,14 @@
                 <span>Dashboard</span></a>
         </li>
         <li class="nav-item">
+        <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/?path=daily-districtwise-data-entry">
+            <i class="fas fa-fw fa-angle-double-right"></i>
+            <span>District Wise Data Entry</span></a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/?path=daily-talukawise-data-entry">
                 <i class="fas fa-fw fa-angle-double-right"></i>
-                <span>Daily Data Entry</span></a>
+                <span>Taluka Wise Data Entry</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?= APP_BASE_HREF ?>admin/?path=manage-hospitals">

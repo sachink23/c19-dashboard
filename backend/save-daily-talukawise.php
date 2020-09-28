@@ -18,9 +18,6 @@ try {
 
     $con->beginTransaction();
 
-    $stmt = $con->prepare("DELETE FROM progressive WHERE date = ?");
-    $stmt->execute([$_POST["date"]]);
-
     $stmt = $con->prepare("DELETE FROM daily WHERE date = ?");
     $stmt->execute([$_POST["date"]]);
 
@@ -48,7 +45,7 @@ try {
     foreach ($talukas as $taluka) {
         $stmt->execute([$taluka]);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $active = (($res["p"] ?? 0) + ($_POST["positive_".$taluka] ?? 0)) - ((($res["di"] ?? 0) + $_POST["discharge_".$taluka] ?? 0) + (($res["d"] ?? 0) + ($_POST["death_".$taluka] ?? 0)));
+        $active = (( is_numeric($res["p"]) ? $res["p"] : 0) + ($_POST["positive_".$taluka] ?? 0)) - ((($res["di"] ?? 0) + $_POST["discharge_".$taluka] ?? 0) + (($res["d"] ?? 0) + ($_POST["death_".$taluka] ?? 0)));
         $stmt2->execute([
             $_POST["date"],
             $taluka,
@@ -63,16 +60,6 @@ try {
         $district_death += ($_POST["death_".$taluka] ?? 0);
         $district_active += ($active ?? 0);
     }
-    $stmt = $con->prepare("INSERT INTO progressive (date, tests, positive, discharge, death, active, updated_on) VALUES (?,?,?,?, ?, ?, ?) ");
-    $stmt->execute([
-        $_POST["date"],
-        $district_tests,
-        $district_positive,
-        $district_discharge,
-        $district_death,
-        $district_active,
-        $time
-    ]);
     $con->commit();
     pageInfo("success", "Data Entry Successful!");
     header("Location: ../admin/?path=daily-talukawise-data-entry");
