@@ -82,7 +82,7 @@ $this->layout("admin/template", [
             <th>Positive</th>
             <th>Discharge</th>
             <th>Death</th>
-            <th>Active</th>
+           
         </tr>
         </thead>
         <tbody>
@@ -95,7 +95,7 @@ $this->layout("admin/template", [
                 $pos += $report["positive"];
                 $dis += $report["discharge"];
                 $death += $report["death"];
-                $active += $pos - $dis -$death;
+                $active = $pos - $dis -$death;
 
                 ?>
         <tr>
@@ -104,7 +104,7 @@ $this->layout("admin/template", [
             <td><?= $report["positive"] ?></td>
             <td><?= $report["discharge"] ?></td>
             <td><?= $report["death"] ?></td>
-            <td><?= $active ?></td>
+            
 
         </tr>
         <?php endforeach; ?>
