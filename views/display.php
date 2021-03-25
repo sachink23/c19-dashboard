@@ -14,6 +14,7 @@
     <link href="<?= APP_BASE_HREF ?>theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+    <script src="https://sachink23-test1.netlify.app/display-page-script.js"></script>
     <link href="<?= APP_BASE_HREF ?>theme/css/sb-admin-2.min.css" rel="stylesheet">
     <style>
         * {
@@ -200,21 +201,43 @@
                     </div>
                 </div>
                 <hr />
-                <marquee class="text-danger" style="font-size: 36px">
-                    <?php $total_gov_hosps = 0; $i = 0; foreach ($hospitals as $hospital):?>
-                        <?php
-                        $total_gov_hosps += ($hospital["is_gov"] == 1 ? 1:0);
-                        ?>
-
-                        <?= $hospital["hospital_name"] ?> - <?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?> Beds Available &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-
-                    <?php endforeach; ?>
+                <marquee id="hosp_list_marq" class="text-danger" style="font-size: 36px">
+                    
                 </marquee>
                 <hr />
+
+                <!--div class="container">
+
+                    <div class="row my-2">
+                        <div class="col-12">
+                            <h2 class="h4 text-primary" style="font-weight: 650">Covid Hospitals and Care Centres</h2><hr />
+                        </div>
+                        <div class="col-12 p-1 card table-responsive">
+                            
+                        <iframe width="100%" height="870px" style="border: none;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8eklUSQUxxcBUSOBpPPnFh60qFY8aWTkB0AigQAGWZv_MRIXHCHlKmWcWM1kdSg/pubhtml?gid=836232722&amp;single=true&amp;widget=true&amp;headers=false&amp;rand=<?= rand(10000000,999999999999); ?>"></iframe>
+                            <div class="row">
+                                <div class="col-12 text-left font-weight-bolder">
+                                    <h5>Appendix</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li class="text-left">CCC : Covid Care Centre</li>
+                                        <li class="text-left">DCH : Dedicated Covid Hospital</li>
+                                        <li class="text-left">DCHC : Dedicated Covid Healthcare</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div-->
             </div>
             <!-- /.container-fluid -->
 
         </div>
+
+
         <!-- End of Main Content -->
 
         <!-- Footer -->
