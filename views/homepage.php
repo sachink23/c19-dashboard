@@ -207,46 +207,9 @@
                         <div class="col-12">
                             <h2 class="h4 text-primary" style="font-weight: 650">Covid Hospitals and Care Centres</h2><hr />
                         </div>
-                        <div class="col-12 p-3 card table-responsive">
-                            <table class="table table-bordered text-center bg-light">
-                                <thead class="thead-inverse bg-dark text-light">
-                                <tr>
-                                    <th>Sr No.</th>
-                                    <th>Hospital Name</th>
-                                    <th>Type</th>
-                                    <th>Gov/Pvt</th>
-                                    <th>Total Beds</th>
-                                    <th>Occupied Beds</th>
-                                    <th>Available Beds</th>
-                                    <th>Updated On</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $total_gov_hosps = 0; $i = 0; foreach ($hospitals as $hospital):?>
-                                    <tr>
-                                        <td><?= ++$i ?></td>
-                                        <td><?= $hospital["hospital_name"] ?></td>
-                                        <td><?= $hospital["type"] ?></td>
-                                        <td><?= $hospital["is_gov"] == 1 ? "GOV":"PVT" ?></td>
-                                        <?php
-                                            $total_gov_hosps += ($hospital["is_gov"] == 1 ? 1:0);
-                                        ?>
-                                        <td><?= $hospital["number_of_beds"] ?></td>
-                                        <td><?= $hospital["number_of_occ_beds"] ?></td>
-                                        <td><?= $hospital["number_of_beds"] - $hospital["number_of_occ_beds"] ?></td>
-                                        <td><?= date("d/m/Y h:i A", strtotime($hospital["updated_on"])) ?></td>
-
-                                    </tr>
-                                <?php endforeach; ?>
-                                    <tr>
-                                        <th colspan="4">Total</th>
-                                        <td><?= $total_beds ?></td>
-                                        <td><?= $total_beds - $total_available_beds ?></td>
-                                        <td><?= $total_available_beds ?></td>
-                                        <td><?= $updated_hosps_det_time ?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="col-12 p-1 card table-responsive">
+                            
+                        <iframe width="100%" height="870px" style="border: none;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8eklUSQUxxcBUSOBpPPnFh60qFY8aWTkB0AigQAGWZv_MRIXHCHlKmWcWM1kdSg/pubhtml?gid=836232722&amp;single=true&amp;widget=true&amp;headers=false&amp;rand=<?= rand(10000000,999999999999); ?>"></iframe>
                             <div class="row">
                                 <div class="col-12 text-left font-weight-bolder">
                                     <h5>Appendix</h5>
@@ -258,12 +221,7 @@
                                         <li class="text-left">DCHC : Dedicated Covid Healthcare</li>
                                     </ul>
                                 </div>
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li class="text-left">Government Hospitals = <?= $total_gov_hosps ?></li>
-                                        <li class="text-left">Private Hospitals = <?= count($hospitals) - $total_gov_hosps ?></li>
-                                    </ul>
-                                </div>
+                                
                             </div>
 
                         </div>
