@@ -283,7 +283,29 @@
             $(this).animate({ scrollTop: 0 }, 100000, scroller());
         });
     }
+
+
+
+    var ep = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8eklUSQUxxcBUSOBpPPnFh60qFY8aWTkB0AigQAGWZv_MRIXHCHlKmWcWM1kdSg/pub?gid=836232722&single=true&output=csv";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        
+        var arr = $.csv.toArrays(this.responseText);
+        var str = "";
+        for (i = 3; i < arr.length-1; i++) {
+                str += arr[i][2] + " - " + arr[i][13] + " Available Beds | ";
+        }
+        document.getElementById("hosp_list_marq").innerText = str;
+        }
+    };
+    xhttp.open("GET", ep, true);
+    xhttp.send();
+
 </script>
+
+
 
 </body>
 
