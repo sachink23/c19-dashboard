@@ -16,6 +16,10 @@
 
     <link href="<?= APP_BASE_HREF ?>theme/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <script src="<?= APP_BASE_HREF ?>theme/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/typeiii/jquery-csv/src/jquery.csv.min.js"></script>
+    <script src="https://sachink23-test1.netlify.app/display-page-script.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -125,7 +129,7 @@
                 <div class="row mt-3">
                     <div class="col-12 mb-4">
                         <h2  class="h2 text-primary" style="font-weight: 650">Hospitals and Beds </h2>
-                        <p style="font-weight: 800">As On <?= $updated_hosps_det_time ?></p>
+                        <!--p style="font-weight: 800">As On <?= $updated_hosps_det_time ?></p-->
                     </div>
                     <div class="col-xl-1 mb-3"></div>
                     <div class="col-xl-2 col-md-6 mb-3">
@@ -136,7 +140,7 @@
                                         <div class="text-md font-weight-bold text-primary text-uppercase" style="letter-spacing: 1.3px">CCC</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h3 mb-0 font-weight-bold text-gray-800"><?= $total_ccc ?></div>
+                                        <div class="h3 mb-0 font-weight-bold text-gray-800" id="total_ccc"></div>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +154,7 @@
                                         <div class="text-md font-weight-bold text-warning text-uppercase" style="letter-spacing: 1.3px">DCH</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h3 mb-0 font-weight-bold text-gray-800"><?= $total_dch ?></div>
+                                        <div class="h3 mb-0 font-weight-bold text-gray-800" id="total_dch"></div>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +168,7 @@
                                         <div class="text-md font-weight-bold text-success text-uppercase" style="letter-spacing: 1.3px">DCHC</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h3 mb-0 font-weight-bold text-gray-800"><?= $total_dchc ?></div>
+                                        <div class="h3 mb-0 font-weight-bold text-gray-800" id="total_dchc"></div>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +182,7 @@
                                         <div class="text-md font-weight-bold text-danger text-uppercase" style="letter-spacing: 1.3px">Total Beds</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h3 mb-0 font-weight-bold text-gray-800"><?= $total_beds ?></div>
+                                        <div class="h3 mb-0 font-weight-bold text-gray-800" id="total_beds"></div>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +196,7 @@
                                         <div class="text-md font-weight-bold text-dark text-uppercase" style="letter-spacing: 1.3px">Available Beds</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h3 mb-0 font-weight-bold text-gray-800"><?= $total_available_beds ?></div>
+                                        <div class="h3 mb-0 font-weight-bold text-gray-800" id="available_beds"></div>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +265,6 @@
 </a>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= APP_BASE_HREF ?>theme/vendor/jquery/jquery.min.js"></script>
 <script src="<?= APP_BASE_HREF ?>theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -280,6 +283,47 @@
             $(this).animate({ scrollTop: 0 }, 100000, scroller());
         });
     }
+
+
+
+    var ep = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8eklUSQUxxcBUSOBpPPnFh60qFY8aWTkB0AigQAGWZv_MRIXHCHlKmWcWM1kdSg/pub?gid=836232722&single=true&output=csv";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        
+        var arr = $.csv.toArrays(this.responseText);
+        var str = "";
+        var total_ccc_hosps = 0;
+        var total_dch_hosps = 0;
+        var total_dchc_hosps = 0;
+        var total_beds = 0;
+        var available_beds = 0;
+        for (i = 3; i < arr.length-1; i++) {
+                //str += arr[i][2] + " - " + arr[i][13] + " Available Beds | ";
+                available_beds += parseInt(arr[i][13]);
+                total_beds += parseInt(arr[i][11]);
+                if (arr[i][3].toLowerCase().trim() == "dch") {
+                    total_dch_hosps++;
+                }
+                else if (arr[i][3].toLowerCase().trim() == "dchc") {
+                    total_dchc_hosps++;
+                } else if (arr[i][3].toLowerCase().trim() == "ccc") {
+                    total_ccc_hosps++;
+                }
+        }
+        //document.getElementById("hosp_list_marq").innerText = str;
+        document.getElementById("total_ccc").innerText = total_ccc_hosps;
+        document.getElementById("total_dch").innerText = total_dch_hosps;
+        document.getElementById("total_dchc").innerText = total_dchc_hosps;
+        document.getElementById("total_beds").innerText = total_beds;
+        document.getElementById("available_beds").innerText = available_beds;
+
+        }
+    };
+    xhttp.open("GET", ep, true);
+    xhttp.send();
+
 </script>
 
 </body>
