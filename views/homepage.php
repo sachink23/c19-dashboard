@@ -129,7 +129,7 @@
                 <div class="row mt-3">
                     <div class="col-12 mb-4">
                         <h2  class="h2 text-primary" style="font-weight: 650">Hospitals and Beds </h2>
-                        <!--p style="font-weight: 800">As On <?= $updated_hosps_det_time ?></p-->
+                        <p style="font-weight: 800" id="bed_status_updated_on"></p>
                     </div>
                     <div class="col-xl-1 mb-3"></div>
                     <div class="col-xl-2 col-md-6 mb-3">
@@ -301,8 +301,14 @@
         var available_beds = 0;
         for (i = 3; i < arr.length-1; i++) {
                 //str += arr[i][2] + " - " + arr[i][13] + " Available Beds | ";
-                available_beds += parseInt(arr[i][13]);
-                total_beds += parseInt(arr[i][11]);
+            if (arr[i][3].toLowerCase().trim() == "dch" || arr[i][3].toLowerCase().trim() == "dchc" || arr[i][3].toLowerCase().trim() == "ccc") {
+                //available_beds += parseInt(arr[i][7]);
+                //total_beds += parseInt(arr[i][5]);
+                // Fetch total values directly from sheet instead of calculating them
+                if (arr[i][2].toLowerCase().trim() == "total") {
+                    available_beds = arr[i][7];
+                    total_beds = arr[i][5]
+                }
                 if (arr[i][3].toLowerCase().trim() == "dch") {
                     total_dch_hosps++;
                 }
@@ -311,6 +317,7 @@
                 } else if (arr[i][3].toLowerCase().trim() == "ccc") {
                     total_ccc_hosps++;
                 }
+            }
         }
         //document.getElementById("hosp_list_marq").innerText = str;
         document.getElementById("total_ccc").innerText = total_ccc_hosps;
@@ -318,7 +325,7 @@
         document.getElementById("total_dchc").innerText = total_dchc_hosps;
         document.getElementById("total_beds").innerText = total_beds;
         document.getElementById("available_beds").innerText = available_beds;
-
+        document.getElementById("bed_status_updated_on").innerText = "As On " + arr[0][6].trim() + " " + arr[0][7].trim();
         }
     };
     xhttp.open("GET", ep, true);
