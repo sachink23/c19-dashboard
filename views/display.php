@@ -176,7 +176,7 @@
                                         <div class="text-md font-weight-bold text-danger text-uppercase" style="letter-spacing: 1.3px">Total Beds</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="available_beds"></div>
+                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="total_beds"></div>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@
                                         <div class="text-md font-weight-bold text-dark text-uppercase" style="letter-spacing: 1.3px">Available Beds</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="total_beds"></div>
+                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="available_beds"></div>
                                     </div>
                                 </div>
                             </div>
