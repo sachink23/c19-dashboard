@@ -299,16 +299,17 @@
         var total_dchc_hosps = 0;
         var total_beds = 0;
         var available_beds = 0;
-        for (i = 3; i < arr.length-1; i++) {
+        for (i = 3; i < arr.length; i++) {
+            if (arr[i][2].toLowerCase().trim() == "total") {
+                available_beds = arr[i][7];
+                total_beds = arr[i][5]
+            }
                 //str += arr[i][2] + " - " + arr[i][13] + " Available Beds | ";
             if (arr[i][3].toLowerCase().trim() == "dch" || arr[i][3].toLowerCase().trim() == "dchc" || arr[i][3].toLowerCase().trim() == "ccc") {
                 //available_beds += parseInt(arr[i][7]);
                 //total_beds += parseInt(arr[i][5]);
                 // Fetch total values directly from sheet instead of calculating them
-                if (arr[i][2].toLowerCase().trim() == "total") {
-                    available_beds = arr[i][7];
-                    total_beds = arr[i][5]
-                }
+
                 if (arr[i][3].toLowerCase().trim() == "dch") {
                     total_dch_hosps++;
                 }
