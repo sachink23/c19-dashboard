@@ -300,7 +300,6 @@
         var total_beds = 0;
         var available_beds = 0;
         for (i = 3; i < arr.length; i++) {
-            str += arr[i][2] + " - " + arr[i][7] + " Available Beds | ";
             if (arr[i][2].toLowerCase().trim() == "total") {
                 available_beds = arr[i][7];
                 total_beds = arr[i][5]
@@ -310,6 +309,7 @@
                 //total_beds += parseInt(arr[i][5]);
                 // Fetch total values directly from sheet instead of calculating them
 
+                str += arr[i][2] + " - " + arr[i][7] + " Available Beds | ";
 
                 if (arr[i][3].toLowerCase().trim() == "dch") {
                     total_dch_hosps++;
