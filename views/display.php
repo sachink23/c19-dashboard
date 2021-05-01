@@ -202,7 +202,7 @@
                     </div>
                 </div>
                 <hr />
-                <marquee id="hosp_list_marq" class="text-danger" style="font-size: 36px">
+                <marquee id="hosp_list_marq" class="text-danger" style="font-size: 56px">
                     
                 </marquee>
                 <hr />
