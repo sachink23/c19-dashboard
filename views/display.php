@@ -317,9 +317,9 @@
 
     }
     function vcended() {
-        clearInterval(window.testCentersTimeout);
-        clearTable();
-        formatTimedTables();
+        setTimeout(() => {
+            window.location.reload(true);   
+        }, 8000);
     }
     function testCentersEnded() {
         clearInterval(window.testCentersTimeout);
