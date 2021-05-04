@@ -319,7 +319,7 @@
     function vcended() {
         setTimeout(() => {
             window.location.reload(true);   
-        }, 8000);
+        }, 8000)
     }
     function testCentersEnded() {
         clearInterval(window.testCentersTimeout);
