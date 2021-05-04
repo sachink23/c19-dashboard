@@ -196,15 +196,49 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-1 mb-3"></div>
-                    <div class="col-12 p-3" style="font-size: 23px">
+                    <!--div class="col-xl-1 mb-3"></div-->
+                    <div class="col-12 p-1" style="font-size: 20px">
                         <p>CCC - Covid Care Centre | DCH - Dedicated Covid Hospital | DCHC - Dedicated Covid Healthcare</p>
                     </div>
                 </div>
                 <hr />
-                <marquee id="hosp_list_marq" class="text-danger" style="font-size: 56px">
+                <div class="container">
+                    <div class="row my-2">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" style="font-size:45px">
+                                    <tr>
+                                        <th id="table_title" class="text-danger text-center"></th>
+                                    </tr>
+                                    <tr><td class="text-center" id="row_1"></td></tr>
+                                    <tr><td class="text-center" id="row_2"></td></tr>
+                                    <tr><td class="text-center" id="row_3"></td></tr>
+                                        
+                                </table>
+                            </div>
+                        </div>
+
+                        <!--div class="col-sm-12 col-md-6">
+                            <h1 class="text-center">List Of Vaccination Center's</h1><hr />
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Test Centers</th>
+                                    </tr>
+                                    <tr>
+                                        <td id="hosp_1"></td>
+                                        <td id="hosp_2"></td>
+                                        <td id="hosp_3"></td>
+                                        <td id="hosp_4"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div-->
+                    </div>
+                </div>
+                <!--marquee id="hosp_list_marq" class="text-danger" style="font-size: 56px">
                     
-                </marquee>
+                </marquee-->
                 <hr />
 
                 <!--div class="container">
@@ -273,6 +307,100 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= APP_BASE_HREF ?>theme/js/sb-admin-2.min.js"></script>
 <script>
+    function clearTable() {
+        console.clear();
+        document.getElementById("table_title").innerText = ""
+
+        document.getElementById("row_1").innerText = ""
+        document.getElementById("row_2").innerText = ""
+        document.getElementById("row_3").innerText = ""
+
+    }
+    function vcended() {
+        clearInterval(window.testCentersTimeout);
+        clearTable();
+        formatTimedTables();
+    }
+    function testCentersEnded() {
+        clearInterval(window.testCentersTimeout);
+        clearTable();
+        
+        document.getElementById("table_title").innerText = "Vaccination Centers"
+
+        window.current_vc = 0;
+        window.testCentersTimeout = setInterval(() => {
+            if (window.current_vc < window.vcs.length) {
+                document.getElementById("row_1").innerText = window.vcs[window.current_vc++]
+            } else {
+                vcended();
+            }
+            if (window.current_vc < window.vcs.length) {
+                document.getElementById("row_2").innerText = window.vcs[window.current_vc++]
+            } else {
+                vcended();
+            }
+            if (window.current_vc < window.vcs.length) {
+                document.getElementById("row_3").innerText = window.vcs[window.current_vc++]
+            } else {
+                vcended();
+            }
+        }, 8000);
+    }
+    function hospitalsEnded() {
+        console.log(1)
+        clearInterval(window.hospitalsTimeout);
+        clearTable();
+
+        document.getElementById("table_title").innerText = "Covid Test Centers"
+
+        window.current_tc = 0;
+        window.testCentersTimeout = setInterval(() => {
+            if (window.current_tc < window.test_centers.length) {
+                document.getElementById("row_1").innerText = window.test_centers[window.current_tc++]
+            } else {
+                testCentersEnded();
+            }
+            if (window.current_tc < window.test_centers.length) {
+                document.getElementById("row_2").innerText = window.test_centers[window.current_tc++]
+            } else {
+                testCentersEnded();
+            }
+            if (window.current_tc < window.test_centers.length) {
+                document.getElementById("row_3").innerText = window.test_centers[window.current_tc++]
+            } else {
+                testCentersEnded();
+            }
+        }, 8000);
+    }
+
+    function formatTimedTables() {
+        console.log(window.hospitals);
+        console.log(window.vcs);
+        console.log(window.test_centers)
+        
+        window.currentHosp = 0;
+        document.getElementById("table_title").innerText = "Beds Available In Hospitals"
+        window.hospitalsTimeout = setInterval(() => {
+            if (window.currentHosp < window.hospitals.length) {
+                document.getElementById("row_1").innerText = window.hospitals[window.currentHosp++]
+            } else {
+                hospitalsEnded();
+            }
+            if (window.currentHosp < window.hospitals.length) {
+                document.getElementById("row_2").innerText = window.hospitals[window.currentHosp++]
+            } else {
+                hospitalsEnded();
+            }
+            if (window.currentHosp < window.hospitals.length) {
+                document.getElementById("row_3").innerText = window.hospitals[window.currentHosp++]
+            } else {
+                hospitalsEnded();
+            }
+            console.log(window.currentHosp)
+        }, 8000);
+        
+    }
+
     function startScroller() {
         scroller();
 
@@ -291,7 +419,7 @@
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        
+        window.hospitals = new Array();
         var arr = $.csv.toArrays(this.responseText);
         var str = "";
         var total_ccc_hosps = 0;
@@ -310,7 +438,7 @@
                 // Fetch total values directly from sheet instead of calculating them
 
                 str += arr[i][2] + " - " + arr[i][7] + " Available Beds | ";
-
+                window.hospitals.push(arr[i][2] + " - " + arr[i][7] + " Available Beds");
                 if (arr[i][3].toLowerCase().trim() == "dch") {
                     total_dch_hosps++;
                 }
@@ -324,20 +452,64 @@
 
 
         }
-        document.getElementById("hosp_list_marq").innerText = str;
+
+        
+        // document.getElementById("hosp_list_marq").innerText = str;
+        // document.getElementById("hosp_list_marq").style.display="none";
         document.getElementById("total_ccc").innerText = total_ccc_hosps;
         document.getElementById("total_dch").innerText = total_dch_hosps;
         document.getElementById("total_dchc").innerText = total_dchc_hosps;
         document.getElementById("total_beds").innerText = total_beds;
         document.getElementById("available_beds").innerText = available_beds;
         document.getElementById("bed_status_updated_on").innerText = "As On " + arr[0][6].trim() + " " + arr[0][7].trim();
-
+        getTestCenters();
 
         }
     };
     xhttp.open("GET", ep, true);
     xhttp.send();
 
+    function getTestCenters() {
+        var xhr2url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS0fWeiqGxi2msBuiNfm87mA7zXaKlxvkzpL1Y31uRilqc6ATMdClxXLaKPab3ljPIbtVt7DJMVNRRa/pub?gid=0&single=true&output=csv";
+
+        var xhr2 = new XMLHttpRequest();
+        window.test_centers = new Array();
+        xhr2.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var test_centers_arr = $.csv.toArrays(this.responseText);
+                
+                for (i = 1; i < test_centers_arr.length; i++) {
+                    window.test_centers.push(test_centers_arr[i][0] + " - " + test_centers_arr[i][1])
+                }
+                getVCS();
+            }
+        };
+        xhr2.open("GET", xhr2url, true);
+        xhr2.send();
+
+    }
+    
+
+    function getVCS() {
+        var xhr3url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS0fWeiqGxi2msBuiNfm87mA7zXaKlxvkzpL1Y31uRilqc6ATMdClxXLaKPab3ljPIbtVt7DJMVNRRa/pub?gid=796149324&single=true&output=csv";
+
+        var xhr3 = new XMLHttpRequest();
+        window.vcs = new Array();
+        xhr3.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var vc = $.csv.toArrays(this.responseText);
+                
+                for (i = 1; i < vc.length; i++) {
+                    window.vcs.push(vc[i][0])
+                }
+                formatTimedTables();
+            }
+        };
+        xhr3.open("GET", xhr3url, true);
+        xhr3.send();
+
+    }
+    
 </script>
 
 
