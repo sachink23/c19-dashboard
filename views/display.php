@@ -21,6 +21,9 @@
         * {
             font-weight: 800;
         }
+        .text-large {
+            font-size: 25px;
+        }
     </style>
 </head>
 
@@ -35,27 +38,27 @@
                 <!-- Content Row -->
 
 
-                <div class="row">
+                <div id="top_1" class="row">
                     <div class="col-12 mb-1">
                         <h1 class="h1 text-danger" style="font-weight: 800;">COVID-19</h1>
 
                         <hr />
-                        <h2 class="h2 text-primary" style="font-weight: 650">Parbhani District Dashboard</h2>
+                        <h1 class="h1 text-primary" style="font-weight: 650">Parbhani District Dashboard</h1>
                         <p style="font-weight: 800">As On <?= $last_talukawise_update ?></p>
                     </div>
                 </div>
 
-                <div class="row">
+                <div id="top_2" class="row">
                     <div class="col-xl-1 mb-3"></div>
                     <div class="col-xl-2 col-md-6 mb-3">
                         <div class="card border-primary shadow h-100 p-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-primary text-uppercase" style="letter-spacing: 1.3px">Tests</div>
+                                        <div class="text-large font-weight-bold text-primary text-uppercase" style="letter-spacing: 1.3px">Tests</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800"><?= $total_tests ?></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800"><?= $total_tests ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -66,10 +69,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-warning text-uppercase" style="letter-spacing: 1.3px">Positive</div>
+                                        <div class="text-large font-weight-bold text-warning text-uppercase" style="letter-spacing: 1.3px">Positive</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800"><?= $total_positive ?></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800"><?= $total_positive ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -80,10 +83,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-success text-uppercase" style="letter-spacing: 1.3px">Discharge</div>
+                                        <div class="text-large font-weight-bold text-success text-uppercase" style="letter-spacing: 1.3px">Discharge</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800"><?= $total_discharge ?></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800"><?= $total_discharge ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -94,10 +97,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-danger text-uppercase" style="letter-spacing: 1.3px">Death</div>
+                                        <div class="text-large font-weight-bold text-danger text-uppercase" style="letter-spacing: 1.3px">Death</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800"><?= $total_dead ?></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800"><?= $total_dead ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -108,10 +111,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-dark text-uppercase" style="letter-spacing: 1.3px">Active</div>
+                                        <div class="text-large font-weight-bold text-dark text-uppercase" style="letter-spacing: 1.3px">Active</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800"><?= $total_active ?></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800"><?= $total_active ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -120,9 +123,9 @@
                     <div class="col-xl-1 mb-3"></div>
                 </div>
                 <hr />
-                <div class="row mt-3">
+                <div id="top_3" class="row mt-3">
                     <div class="col-12 mb-4">
-                        <h2  class="h2 text-primary" style="font-weight: 650">Hospitals and Beds </h2>
+                        <h1  class="h1 text-primary" style="font-weight: 650">Hospitals and Beds </h1>
                         <p style="font-weight: 800" id="bed_status_updated_on"></p>
                     </div>
                     <div class="col-xl-1 mb-3"></div>
@@ -131,10 +134,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-primary text-uppercase" style="letter-spacing: 1.3px">CCC</div>
+                                        <div class="text-large font-weight-bold text-primary text-uppercase" style="letter-spacing: 1.3px">CCC</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="total_ccc"> </div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800" id="total_ccc"> </div>
                                     </div>
                                 </div>
                             </div>
@@ -145,10 +148,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-warning text-uppercase" style="letter-spacing: 1.3px">DCH</div>
+                                        <div class="text-large font-weight-bold text-warning text-uppercase" style="letter-spacing: 1.3px">DCH</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="total_dch"> </div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800" id="total_dch"> </div>
                                     </div>
                                 </div>
                             </div>
@@ -159,10 +162,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-success text-uppercase" style="letter-spacing: 1.3px">DCHC</div>
+                                        <div class="text-large font-weight-bold text-success text-uppercase" style="letter-spacing: 1.3px">DCHC</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="total_dchc"> </div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800" id="total_dchc"> </div>
                                     </div>
                                 </div>
                             </div>
@@ -173,10 +176,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-danger text-uppercase" style="letter-spacing: 1.3px">Total Beds</div>
+                                        <div class="text-large font-weight-bold text-danger text-uppercase" style="letter-spacing: 1.3px">Total Beds</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="total_beds"></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800" id="total_beds"></div>
                                     </div>
                                 </div>
                             </div>
@@ -187,10 +190,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-12 text-center mb-3">
-                                        <div class="text-md font-weight-bold text-dark text-uppercase" style="letter-spacing: 1.3px">Available Beds</div>
+                                        <div class="text-large font-weight-bold text-dark text-uppercase" style="letter-spacing: 1.3px">Available Beds</div>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <div class="h2 mb-0 font-weight-bold text-gray-800" id="available_beds"></div>
+                                        <div class="h1 mb-0 font-weight-bold text-gray-800" id="available_beds"></div>
                                     </div>
                                 </div>
                             </div>
@@ -206,9 +209,9 @@
                     <div class="row my-2">
                         <div class="col-sm-12 col-md-12">
                             <div class="table-responsive">
-                                <table class="table table-bordered" style="font-size:45px">
+                                <table class="table table-bordered" style="font-size:65px">
                                     <tr>
-                                        <th id="table_title" class="text-danger text-center"></th>
+                                        <th id="table_title" class="text-danger text-center" style="font-size:70px"></th>
                                     </tr>
                                     <tr><td class="text-center" id="row_1"></td></tr>
                                     <tr><td class="text-center" id="row_2"></td></tr>
@@ -245,7 +248,7 @@
 
                     <div class="row my-2">
                         <div class="col-12">
-                            <h2 class="h4 text-primary" style="font-weight: 650">Covid Hospitals and Care Centres</h2><hr />
+                            <h1 class="h4 text-primary" style="font-weight: 650">Covid Hospitals and Care Centres</h1><hr />
                         </div>
                         <div class="col-12 p-1 card table-responsive">
                             
@@ -314,6 +317,8 @@
         document.getElementById("row_1").innerText = ""
         document.getElementById("row_2").innerText = ""
         document.getElementById("row_3").innerText = ""
+        document.getElementById("row_4").innerText = ""
+        document.getElementById("row_5").innerText = ""
 
     }
     function vcended() {
@@ -332,16 +337,36 @@
             if (window.current_vc < window.vcs.length) {
                 document.getElementById("row_1").innerText = window.vcs[window.current_vc++]
             } else {
+                document.getElementById("row_1").innerText = ""
+
                 vcended();
             }
             if (window.current_vc < window.vcs.length) {
                 document.getElementById("row_2").innerText = window.vcs[window.current_vc++]
             } else {
+                document.getElementById("row_2").innerText = ""
+
                 vcended();
             }
             if (window.current_vc < window.vcs.length) {
                 document.getElementById("row_3").innerText = window.vcs[window.current_vc++]
             } else {
+                document.getElementById("row_3").innerText = ""
+
+                vcended();
+            }
+            if (window.current_vc < window.vcs.length) {
+                document.getElementById("row_4").innerText = window.vcs[window.current_vc++]
+            } else {
+                document.getElementById("row_4").innerText = ""
+
+                vcended();
+            }
+            if (window.current_vc < window.vcs.length) {
+                document.getElementById("row_5").innerText = window.vcs[window.current_vc++]
+            } else {
+                document.getElementById("row_5").innerText = ""
+
                 vcended();
             }
         }, 8000);
@@ -358,16 +383,31 @@
             if (window.current_tc < window.test_centers.length) {
                 document.getElementById("row_1").innerText = window.test_centers[window.current_tc++]
             } else {
+                document.getElementById("row_1").innerText = ""
                 testCentersEnded();
             }
             if (window.current_tc < window.test_centers.length) {
                 document.getElementById("row_2").innerText = window.test_centers[window.current_tc++]
             } else {
+                document.getElementById("row_2").innerText = ""
                 testCentersEnded();
             }
             if (window.current_tc < window.test_centers.length) {
                 document.getElementById("row_3").innerText = window.test_centers[window.current_tc++]
             } else {
+                document.getElementById("row_3").innerText = ""
+                testCentersEnded();
+            }
+            if (window.current_tc < window.test_centers.length) {
+                document.getElementById("row_4").innerText = window.test_centers[window.current_tc++]
+            } else {
+                document.getElementById("row_4").innerText = ""
+                testCentersEnded();
+            }
+            if (window.current_tc < window.test_centers.length) {
+                document.getElementById("row_5").innerText = window.test_centers[window.current_tc++]
+            } else {
+                document.getElementById("row_5").innerText = ""
                 testCentersEnded();
             }
         }, 8000);
@@ -377,23 +417,48 @@
         console.log(window.hospitals);
         console.log(window.vcs);
         console.log(window.test_centers)
-        
+        setTimeout(() => {
+            document.getElementById("top_1").style.display = "none";
+            document.getElementById("top_2").style.display = "none";
+            document.getElementById("top_3").style.display = "none";
+            document.getElementById("data_table").style.display = "";
+        }, 5000);
         window.currentHosp = 0;
         document.getElementById("table_title").innerText = "Beds Available In Hospitals"
         window.hospitalsTimeout = setInterval(() => {
             if (window.currentHosp < window.hospitals.length) {
                 document.getElementById("row_1").innerText = window.hospitals[window.currentHosp++]
             } else {
+                document.getElementById("row_1").innerText = "";
+
                 hospitalsEnded();
             }
             if (window.currentHosp < window.hospitals.length) {
                 document.getElementById("row_2").innerText = window.hospitals[window.currentHosp++]
             } else {
+                document.getElementById("row_2").innerText = "";
+
                 hospitalsEnded();
             }
             if (window.currentHosp < window.hospitals.length) {
                 document.getElementById("row_3").innerText = window.hospitals[window.currentHosp++]
             } else {
+                document.getElementById("row_3").innerText = "";
+
+                hospitalsEnded();
+            }
+            if (window.currentHosp < window.hospitals.length) {
+                document.getElementById("row_4").innerText = window.hospitals[window.currentHosp++]
+            } else {
+                document.getElementById("row_4").innerText = "";
+
+                hospitalsEnded();
+            }
+            if (window.currentHosp < window.hospitals.length) {
+                document.getElementById("row_5").innerText = window.hospitals[window.currentHosp++]
+            } else {
+                document.getElementById("row_5").innerText = "";
+
                 hospitalsEnded();
             }
             console.log(window.currentHosp)
@@ -511,7 +576,6 @@
     }
     
 </script>
-
 
 
 </body>
